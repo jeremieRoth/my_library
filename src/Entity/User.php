@@ -27,6 +27,11 @@ class User implements UserInterface
      */
     private $roles = [];
 
+    private const ROLE_LISTE = [
+        'admin' => 'ROLE_ADMIN',
+        'utilisateur' => 'ROLE_USER'
+    ];
+
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
@@ -109,5 +114,10 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getRoleListe()
+    {
+        return $this::ROLE_LISTE;
     }
 }
