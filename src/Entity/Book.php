@@ -21,6 +21,11 @@ class Book
      */
     private $title;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Series::class)
+     */
+    private $series;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -36,5 +41,21 @@ class Book
         $this->title = $title;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeries()
+    {
+        return $this->series;
+    }
+
+    /**
+     * @param mixed $series
+     */
+    public function setSeries($series): void
+    {
+        $this->series = $series;
     }
 }
