@@ -29,7 +29,7 @@ class User implements UserInterface
 
     private const ROLE_LISTE = [
         'admin' => 'ROLE_ADMIN',
-        'utilisateur' => 'ROLE_USER'
+        'user' => 'ROLE_USER'
     ];
 
     /**
@@ -116,7 +116,7 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getRoleListe()
+    public function getRoleList()
     {
         return $this::ROLE_LISTE;
     }

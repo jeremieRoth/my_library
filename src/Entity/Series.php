@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SeriesRepository")
@@ -35,6 +36,11 @@ class Series
      * @ORM\Column(type="boolean")
      */
     private $validate;
+
+    /**
+     * @Assert\Choice(callback="getTypes")
+     */
+    private $type;
 
     public function getId(): ?int
     {
@@ -87,5 +93,30 @@ class Series
         $this->validate = $validate;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     * @return Series
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+
+    public static function getTypes()
+    {
+        return ['manga', 'comic_book', 'bd', 'book'];
     }
 }
