@@ -38,9 +38,22 @@ class Series
     private $validate;
 
     /**
+     * TODO remplacer par entité pour cause de redondance
      * @Assert\Choice(callback="getTypes")
      */
     private $type;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $finished;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $status;
+
+
 
     public function getId(): ?int
     {
@@ -118,5 +131,29 @@ class Series
     public static function getTypes()
     {
         return ['manga', 'comic_book', 'bd', 'book'];
+    }
+
+    public function getFinished(): ?bool
+    {
+        return $this->finished;
+    }
+
+    public function setFinished(bool $finished): self
+    {
+        $this->finished = $finished;
+
+        return $this;
+    }
+
+    public function getStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): self
+    {
+        $this->status = $status;
+
+        return $this;
     }
 }
