@@ -13,10 +13,13 @@
     </head>
     <body>
         {% include "header.html.twig" %}
+        <title>{% block title %}Welcome!{% endblock %}</title>
 
-        <div class="container text-center">
-            nouvelles sorties
-        </div>
+        {% block body %}
+            <div class="container text-center">
+                nouvelles sorties
+            </div>
+        {% endblock %}
 
 
         {% include "footer.html.twig" %}
