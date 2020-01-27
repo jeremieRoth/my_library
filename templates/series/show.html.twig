@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Series{% endblock %}
+
+{% block body %}
+    <h1>Series</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ series.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ series.title }}</td>
+            </tr>
+            <tr>
+                <th>CreationDate</th>
+                <td>{{ series.creationDate ? series.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdateDate</th>
+                <td>{{ series.updateDate ? series.updateDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Validate</th>
+                <td>{{ series.validate ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Finished</th>
+                <td>{{ series.finished ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ series.status ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('series_index') }}">back to list</a>
+
+    <a href="{{ path('series_edit', {'id': series.id}) }}">edit</a>
+
+    {{ include('series/_delete_form.html.twig') }}
+{% endblock %}
