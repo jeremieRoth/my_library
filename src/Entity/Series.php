@@ -38,10 +38,9 @@ class Series
     private $validate;
 
     /**
-     * TODO remplacer par entité pour cause de redondance
-     * @Assert\Choice(callback="getTypes")
+     * @ORM\ManyToOne(targetEntity="App\Entity\BookCategory")
      */
-    private $type;
+    private $bookCategory;
 
     /**
      * @ORM\Column(type="boolean")
@@ -108,30 +107,10 @@ class Series
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param mixed $type
-     * @return Series
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-
-    public static function getTypes()
-    {
-        return ['manga', 'comic_book', 'bd', 'book'];
-    }
+//    public static function getTypes()
+//    {
+//        return ['manga', 'comic_book', 'bd', 'book'];
+//    }
 
     public function getFinished(): ?bool
     {
@@ -154,6 +133,24 @@ class Series
     {
         $this->status = $status;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBookCategory()
+    {
+        return $this->bookCategory;
+    }
+
+    /**
+     * @param mixed $bookCategory
+     * @return Series
+     */
+    public function setBookCategory($bookCategory)
+    {
+        $this->bookCategory = $bookCategory;
         return $this;
     }
 }
