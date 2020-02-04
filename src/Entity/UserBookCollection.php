@@ -23,6 +23,11 @@ class UserBookCollection
     private $user;
 
     /**
+     * @ORM\Column(type="string", length=180)
+     */
+    private $name;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Book")
      */
     // TODO cascade
@@ -68,4 +73,23 @@ class UserBookCollection
         $this->user = $user;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     * @return UserBookCollection
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
 }

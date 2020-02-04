@@ -37,4 +37,9 @@ class BookCategory
 
         return $this;
     }
+
+    public function __construct(string $name)
+    {
+        $this->setName($name);
+    }
 }
