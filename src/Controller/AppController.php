@@ -19,8 +19,18 @@ class AppController extends AbstractController
     /**
      * @Route("/home")
      */
-    public function Home(){
+    public function home()
+    {
 
         return $this->render("layout.html.twig");
+    }
+
+    /**
+     * @Route("/books")
+     */
+    public function myLibrary()
+    {
+
+        return $this->render("appSeriesList.html.twig");
     }
 }

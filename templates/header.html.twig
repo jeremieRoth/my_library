@@ -1,22 +1,32 @@
 <header>
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
-        <a class="navbar-brand" href="http://localhost/maquette_library/index.html">ma biblioteque</a>
+        <a class="navbar-brand" href="http://127.0.0.1:8000/home">ma biblioteque</a>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost/maquette_library/livres.html">mes livres</a>
-            </li>
+            {% if is_granted('ROLE_VIEW_BOOK') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/books">mes livres</a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_VIEW_MANGA') %}
             <li class="nav-item">
                 <a class="nav-link" href="">mes manga</a>
             </li>
+            {% endif %}
+            {% if is_granted('ROLE_VIEW_COMICS') %}
             <li class="nav-item">
                 <a class="nav-link" href="">mes comics</a>
             </li>
+            {% endif %}
+            {% if is_granted('ROLE_VIEW_BD') %}
             <li class="nav-item">
                 <a class="nav-link" href="">mes bd</a>
             </li>
+            {% endif %}
+            {% if is_granted('VIEW_BOOK') %}
             <li class="nav-item">
                 <a class="nav-link" href="/admin">Administration</a>
             </li>
+            {% endif %}
             <li class="nav-item">
                 <a class="nav-link" href="/user">Administration user</a>
             </li>

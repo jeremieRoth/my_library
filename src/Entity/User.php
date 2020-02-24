@@ -39,7 +39,11 @@ class User implements UserInterface
 
     private const ROLE_LISTE = [
         'admin' => 'ROLE_ADMIN',
-        'user' => 'ROLE_USER'
+        'user' => 'ROLE_USER',
+        'book' => 'ROLE_VIEW_BOOK',//visibility in book page
+        'manga' => 'ROLE_VIEW_MANGA',//Visibility in manga page
+        'bd' => 'ROLE_VIEW_BD',//Visibility in bd page
+        'comics' => 'ROLE_VIEW_COMICS'//Visibility in comics page
     ];
 
     /**
@@ -118,8 +122,8 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        // guarantee every user at least has ROLE_USER( pas besoin pour le moment)
+//        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }

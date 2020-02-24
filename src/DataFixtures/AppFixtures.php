@@ -35,13 +35,14 @@ class AppFixtures extends Fixture
         $user = new User();
         $user->setEmail("jeremieroth@gmail.com")->setName("user1")
             ->setPassword($this->encoder->encodePassword($user, 'user1'))
-            ->setRoles([])->setStatus(true);
+            ->setRoles([$admin->getRoleList()['bd'],$admin->getRoleList()['book']])->setStatus(true);
         $manager->persist($user);
 
         $userBookCollection = new UserBookCollection();
         $userBookCollection->setName("default")->setUser($user);
         $manager->persist($userBookCollection);
 
+        // create disable user account
         $disableUser = new User();
         $disableUser->setEmail("disablejr@gmail.com")->setName("disuser1")
             ->setPassword($this->encoder->encodePassword($disableUser, 'disuser1'))

@@ -8,12 +8,11 @@
         <!-- bootstrap import -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <title>ma biblioteque</title>
+        <title>{% block title %}ma biblioteque{% endblock %}</title>
 
     </head>
     <body>
         {% include "header.html.twig" %}
-        <title>{% block title %}Welcome!{% endblock %}</title>
 
         {% block body %}
             <div class="container text-center">
