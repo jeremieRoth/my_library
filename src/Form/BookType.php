@@ -13,11 +13,13 @@ class BookType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('author')
             ->add('releaseDate')
             ->add('releaseStatus')
             ->add('status')
             ->add('special')
             ->add('series')
+            ->add('isbn')
         ;
     }
 

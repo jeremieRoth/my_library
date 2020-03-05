@@ -20,7 +20,7 @@ class SeriesController extends AbstractController
      */
     public function index(SeriesRepository $seriesRepository): Response
     {
-        return $this->render('series/index.html.twig', [
+        return $this->render('admin/series/index.html.twig', [
             'series' => $seriesRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class SeriesController extends AbstractController
             return $this->redirectToRoute('series_index');
         }
 
-        return $this->render('series/new.html.twig', [
+        return $this->render('admin/series/new.html.twig', [
             'series' => $series,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class SeriesController extends AbstractController
      */
     public function show(Series $series): Response
     {
-        return $this->render('series/show.html.twig', [
+        return $this->render('admin/series/show.html.twig', [
             'series' => $series,
         ]);
     }
@@ -72,7 +72,7 @@ class SeriesController extends AbstractController
             return $this->redirectToRoute('series_index');
         }
 
-        return $this->render('series/edit.html.twig', [
+        return $this->render('admin/series/edit.html.twig', [
             'series' => $series,
             'form' => $form->createView(),
         ]);

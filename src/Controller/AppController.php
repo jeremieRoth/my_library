@@ -26,11 +26,11 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/books")
+     * @Route("/collection")
      */
-    public function myLibrary()
+    public function collection()
     {
 
-        return $this->render("appSeriesList.html.twig");
+        return $this->render("app/collection.html.twig");
     }
 }

@@ -7,8 +7,12 @@
         mes series de livre/comics/manga
     </div>
     <p>grid view only(dev)</p>
-    <div id="series" class="row view-group">
-        {% for i in 0..20 %}
+    <button type="button" class="btn btn-primary mx-auto d-block" data-toggle="modal" data-target="#modalAddSeries">ajouter une series</button>
+<br/>
+
+
+    <div id="series-static" class="row view-group">
+        {% for i in 0..10 %}
         <div class="item col-xs-4 col-lg-4">
             <div class="thumbnail card">
                 <h4 class="group card-title inner list-group-item-heading"><p>title: azerty</p></h4>
@@ -24,4 +28,11 @@
         </div>
         {% endfor %}
     </div>
+
+    {#MODALES#}
+
+    {#pop_add_serie#}
+    {{ include('app/formAddSerie.html.twig') }}
 {% endblock %}
+
+

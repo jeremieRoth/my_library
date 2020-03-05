@@ -20,7 +20,7 @@ class BookController extends AbstractController
      */
     public function index(BookRepository $bookRepository): Response
     {
-        return $this->render('book/index.html.twig', [
+        return $this->render('admin/book/index.html.twig', [
             'books' => $bookRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class BookController extends AbstractController
             return $this->redirectToRoute('book_index');
         }
 
-        return $this->render('book/new.html.twig', [
+        return $this->render('admin/book/new.html.twig', [
             'book' => $book,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class BookController extends AbstractController
      */
     public function show(Book $book): Response
     {
-        return $this->render('book/show.html.twig', [
+        return $this->render('admin/book/show.html.twig', [
             'book' => $book,
         ]);
     }
@@ -72,7 +72,7 @@ class BookController extends AbstractController
             return $this->redirectToRoute('book_index');
         }
 
-        return $this->render('book/edit.html.twig', [
+        return $this->render('admin/book/edit.html.twig', [
             'book' => $book,
             'form' => $form->createView(),
         ]);

@@ -22,6 +22,11 @@ class Book
     private $title;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $author;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Series::class)
      */
     private $series;
@@ -47,6 +52,12 @@ class Book
      */
     private $special;
 
+    /**
+     * isbn code
+     * @ORM\Column(type="string", length=13)
+     */
+    private $isbn;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +72,24 @@ class Book
     {
         $this->title = $title;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     * @return Book
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
         return $this;
     }
 
@@ -125,6 +154,24 @@ class Book
     {
         $this->special = $special;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsbn()
+    {
+        return $this->isbn;
+    }
+
+    /**
+     * @param mixed $isbn
+     * @return Book
+     */
+    public function setIsbn($isbn)
+    {
+        $this->isbn = $isbn;
         return $this;
     }
 }

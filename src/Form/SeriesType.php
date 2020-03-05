@@ -18,6 +18,7 @@ class SeriesType extends AbstractType
             ->add('validate')
             ->add('finished')
             ->add('status')
+            ->add('bookCategory')
         ;
     }
 
