@@ -52,7 +52,7 @@ class AppFixtures extends Fixture
         $manager->persist($disableUser);
 
         $disableUserBookCollection = new UserBookCollection();
-        $disableUserBookCollection->setName("default")->setUser($user);
+        $disableUserBookCollection->setName("default")->setUser($disableUser);
         $manager->persist($disableUserBookCollection);
 
         // create book categories
@@ -90,6 +90,10 @@ class AppFixtures extends Fixture
         $manager->persist($book2);
         $manager->persist($book3);
         $manager->persist($book4);
+        $manager->flush();
+
+        $userBookCollection->addBook($book1);
+        $manager->persist($userBookCollection);
         $manager->flush();
     }
 }

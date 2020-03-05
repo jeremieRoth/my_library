@@ -12,6 +12,29 @@
 
 
     <div id="series-static" class="row view-group">
+        {% for book in book_list %}
+        <div class="item col-xs-4 col-lg-4">
+            <div class="thumbnail card">
+                <h4 class="group card-title inner list-group-item-heading"><p>title: {{book.title}}</p></h4>
+                <div class="img-event">
+                    <img class="group list-group-image img-fluid" src="https://lh3.googleusercontent.com/proxy/1k6hXC5110Iv-pEQVZ6QA15hIPHQXtTcgAk95Ju_7GQ5z-b5KpUc7HDOrg5vAIMLkm7sOEAJwypq5KoNd3tRrULExiYx_g-OwVHoo5G51ztUsW-pxayHCIn5jFlboAtX0Q-pXQMr2Zth">
+                </div>
+                <div class="caption card-body">
+                    <p class="group inner list-group-item-text">by {{ book.author }}</p>
+                </div>
+                <button class="btn btn-info">voir les livres</button>
+                <button class="btn btn-warning">ajouter les livres</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <p>test</p>
+    <div id="series-static" class="row view-group">
         {% for i in 0..10 %}
         <div class="item col-xs-4 col-lg-4">
             <div class="thumbnail card">

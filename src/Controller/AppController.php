@@ -8,7 +8,7 @@
 
 namespace App\Controller;
 
-
+use App\Entity\UserBookCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -30,7 +30,13 @@ class AppController extends AbstractController
      */
     public function collection()
     {
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->render("app/collection.html.twig");
+        $bookList = $em->getRepository(UserBookCollection::class)->findOneByUser($this->getUser()->getId())
+            ->getBookList()->getValues();
+
+        return $this->render("app/collection.html.twig", array(
+            'book_list' => $bookList
+        ));
     }
 }

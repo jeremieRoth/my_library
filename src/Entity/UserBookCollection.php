@@ -18,7 +18,7 @@ class UserBookCollection
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\OneToOne(targetEntity="User")
      */
     private $user;
 
@@ -65,10 +65,10 @@ class UserBookCollection
     }
 
     /**
-     * @param mixed $user
+     * @param User $user
      * @return UserBookCollection
      */
-    public function setUser($user)
+    public function setUser(User $user)
     {
         $this->user = $user;
         return $this;
@@ -89,6 +89,25 @@ class UserBookCollection
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @param Book $bookList
+     * @return UserBookCollection
+     */
+    public function addBook(Book $book)
+    {
+        $this->bookList[] = $book;
+
+        return $this;
+    }
+
+    public function removeBook(Book $book){
+        if ($key = array_search($book,$this->bookList) !== false){
+            unset($this->bookList[$key]);
+        }
+
         return $this;
     }
 
