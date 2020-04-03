@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\UserBookCollection;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -19,6 +20,28 @@ class UserBookCollectionRepository extends ServiceEntityRepository
         parent::__construct($registry, UserBookCollection::class);
     }
 
+    /**
+     * return a array contain series and books
+     *
+     * @param User $user
+     * @return array
+     */
+    public function findSeriesAndBookByUser(User $user)
+    {
+        $books = $this->findOneByUser($user)->getBookList()->getValues();
+
+        $bookListFormated = [];
+        $seriesList = [];
+        foreach ($books as $book){
+            $bookListFormated[$book->getSeries()->getId()] = $book;
+            if(!in_array($book->getSeries(),$seriesList)){
+                $seriesList[] = $book->getSeries();
+            }
+        }
+        $result = ['series' => $seriesList, 'books' => $bookListFormated];
+
+        return $result;
+    }
     // /**
     //  * @return UserBookCollection[] Returns an array of UserBookCollection objects
     //  */
