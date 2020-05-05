@@ -33,7 +33,7 @@ class UserBookCollectionRepository extends ServiceEntityRepository
         $bookListFormated = [];
         $seriesList = [];
         foreach ($books as $book){
-            $bookListFormated[$book->getSeries()->getId()] = $book;
+            $bookListFormated[$book->getSeries()->getId()][] = $book;
             if(!in_array($book->getSeries(),$seriesList)){
                 $seriesList[] = $book->getSeries();
             }

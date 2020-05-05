@@ -22,6 +22,11 @@ class Book
     private $title;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $number;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $author;
@@ -30,6 +35,11 @@ class Book
      * @ORM\ManyToOne(targetEntity=Series::class)
      */
     private $series;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $summary;
 
     /**
      * @ORM\Column(type="date", nullable=true)
@@ -78,6 +88,24 @@ class Book
     /**
      * @return mixed
      */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param mixed $number
+     * @return Book
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getAuthor()
     {
         return $this->author;
@@ -103,10 +131,31 @@ class Book
 
     /**
      * @param mixed $series
+     * @return Book
      */
-    public function setSeries($series): void
+    public function setSeries($series): Book
     {
         $this->series = $series;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param mixed $summary
+     * @return Book
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+        return $this;
     }
 
     public function getReleaseDate(): ?\DateTimeInterface
