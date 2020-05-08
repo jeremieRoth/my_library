@@ -2,21 +2,20 @@
 
 namespace App\Entity;
 
+use DateTimeInterface;
+
+use App\Entity\BaseEntity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BookRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class Book
+class Book extends BaseEntity
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
+     * @var String
      * @ORM\Column(type="string", length=255)
      */
     private $title;
@@ -25,11 +24,6 @@ class Book
      * @ORM\Column(type="integer", nullable=true)
      */
     private $number;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity=Series::class)
@@ -68,10 +62,11 @@ class Book
      */
     private $isbn;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
 
     public function getTitle(): ?string
     {
@@ -100,24 +95,6 @@ class Book
     public function setNumber($number)
     {
         $this->number = $number;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
-     * @param mixed $author
-     * @return Book
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
         return $this;
     }
 
@@ -158,12 +135,12 @@ class Book
         return $this;
     }
 
-    public function getReleaseDate(): ?\DateTimeInterface
+    public function getReleaseDate(): ?DateTimeInterface
     {
         return $this->releaseDate;
     }
 
-    public function setReleaseDate(?\DateTimeInterface $releaseDate): self
+    public function setReleaseDate(?DateTimeInterface $releaseDate): self
     {
         $this->releaseDate = $releaseDate;
 
@@ -221,6 +198,18 @@ class Book
     public function setIsbn($isbn)
     {
         $this->isbn = $isbn;
+        return $this;
+    }
+
+    public function getAuthor(): ?Author
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Author $author): self
+    {
+        $this->author = $author;
+
         return $this;
     }
 }
