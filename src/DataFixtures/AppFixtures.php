@@ -20,6 +20,10 @@ class AppFixtures extends Fixture
         $this->encoder = $encoder;
     }
 
+    /**
+     * @todo: refactor this to put code inside datafixture by entity
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         // create admin user account
