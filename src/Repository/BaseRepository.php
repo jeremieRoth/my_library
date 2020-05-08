@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 use App\Entity\Book;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -13,7 +14,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  * @method Book[]    findAll()
  * @method Book[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class BaseRepository extends ServiceEntityRepository
+abstract class BaseRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry, $entityClass)
     {
@@ -36,6 +37,15 @@ class BaseRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder($this->getAlias())
             ->andWhere($this->getAlias().'.deleted_at is null');
+    }
+
+    public function findByUpdatedAfter(DateTime $date)
+    {
+        return $this->getQuery()
+            ->andWhere($this->getAlias().'.updated_at > :val')
+            ->setParameter('val', $date)
+            ->getQuery()
+            ->getResult();
     }
 
 }

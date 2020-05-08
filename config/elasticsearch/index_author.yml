@@ -1,0 +1,21 @@
+mappings:
+  dynamic: strict
+  properties:
+    id:
+      type: text
+    name:
+      type: text
+    image:
+      type: text
+    books:
+      type: object
+      properties:
+        id:
+          type: text
+        title:
+          type: text
+    biography:
+      type: object
+      properties:
+        fr:
+          type: text

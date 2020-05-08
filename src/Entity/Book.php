@@ -7,6 +7,8 @@ use DateTimeInterface;
 use App\Entity\BaseEntity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BookRepository")
@@ -17,6 +19,7 @@ class Book extends BaseEntity
     /**
      * @var String
      * @ORM\Column(type="string", length=255)
+     * @Groups({"es-index"})
      */
     private $title;
 
@@ -32,11 +35,14 @@ class Book extends BaseEntity
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"es-index-book"})
      */
     private $summary;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @SerializedName("released_at")
+     * @Groups({"es-index-book"})
      */
     private $releaseDate;
 
@@ -65,6 +71,7 @@ class Book extends BaseEntity
     /**
      * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"es-index-book"})
      */
     private $author;
 
@@ -122,7 +129,7 @@ class Book extends BaseEntity
      */
     public function getSummary()
     {
-        return $this->summary;
+        return ['fr' => $this->summary];
     }
 
     /**

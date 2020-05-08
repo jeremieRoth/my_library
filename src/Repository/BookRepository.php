@@ -18,13 +18,4 @@ class BookRepository extends BaseRepository
     {
         parent::__construct($registry, Book::class);
     }
-
-    public function findByUpdatedAfter(DateTime $date)
-    {
-        return $this->getQuery()
-            ->andWhere('b.updated_at > :val')
-            ->setParameter('val', $date)
-            ->getQuery()
-            ->getResult();
-    }
 }

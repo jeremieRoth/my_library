@@ -5,37 +5,29 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=AuthorRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
-class Author
+class Author extends BaseEntity
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"es-index"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Book::class, mappedBy="author")
+     * @Groups({"es-index-author"})
      */
     private $books;
 
     public function __construct()
     {
         $this->books = new ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     public function getName(): ?string
