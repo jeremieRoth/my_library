@@ -5,6 +5,7 @@ namespace App\Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use OpenApi\Annotations as OA;
 
 abstract class BaseEntity
 {
@@ -13,6 +14,7 @@ abstract class BaseEntity
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
      * @Groups({"es-index"})
+     * @OA\Property(type="string", format="guid")
      */
     protected $id;
 

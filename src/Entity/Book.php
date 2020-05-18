@@ -7,19 +7,26 @@ use DateTimeInterface;
 use App\Entity\BaseEntity;
 
 use Doctrine\ORM\Mapping as ORM;
+
+use OpenApi\Annotations as OA;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BookRepository")
  * @ORM\HasLifecycleCallbacks
+ * @OA\Schema()
  */
 class Book extends BaseEntity
 {
     /**
+     * Book's title
      * @var String
+     *
      * @ORM\Column(type="string", length=255)
      * @Groups({"es-index"})
+     * @OA\Property()
      */
     private $title;
 
@@ -34,8 +41,11 @@ class Book extends BaseEntity
     private $series;
 
     /**
+     * Book's summary
+     * @var string
      * @ORM\Column(type="text")
      * @Groups({"es-index-book"})
+     * @OA\Property()
      */
     private $summary;
 
@@ -72,6 +82,7 @@ class Book extends BaseEntity
      * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"es-index-book"})
+     * @OA\Property(ref="#/components/schemas/Author")
      */
     private $author;
 

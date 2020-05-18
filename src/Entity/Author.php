@@ -5,17 +5,25 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+
+use OpenApi\Annotations as OA;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=AuthorRepository::class)
  * @ORM\HasLifecycleCallbacks
+ * @OA\Schema()
  */
 class Author extends BaseEntity
 {
     /**
+     * Author's name
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      * @Groups({"es-index"})
+     * @OA\Property()
      */
     private $name;
 
