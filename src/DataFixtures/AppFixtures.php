@@ -71,9 +71,9 @@ class AppFixtures extends Fixture
         $serie1 = new Series();
         $serie2 = new Series();
         $serie3 = new Series();
-        $serie1->setTitle('title1')->setStatus(true)->setBookCategory($bookCategory)->setValidate(true)->setCreationDate(new \DateTime())->setFinished(false)->setUpdateDate(new \DateTime());
-        $serie2->setTitle('title2')->setStatus(true)->setBookCategory($bookCategory)->setValidate(true)->setCreationDate(new \DateTime())->setFinished(true)->setUpdateDate(new \DateTime());
-        $serie3->setTitle('title3')->setStatus(false)->setBookCategory($bookCategory)->setValidate(false)->setCreationDate(new \DateTime())->setFinished(false)->setUpdateDate(new \DateTime());
+        $serie1->setTitle('title1')->setStatus(true)->setBookCategory($bookCategory)->setValidate(true)->setCreationDate(new \DateTime())->setFinished(false)->setUpdateDate(new \DateTime())->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
+        $serie2->setTitle('title2')->setStatus(true)->setBookCategory($bookCategory)->setValidate(true)->setCreationDate(new \DateTime())->setFinished(true)->setUpdateDate(new \DateTime())->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
+        $serie3->setTitle('title3')->setStatus(false)->setBookCategory($bookCategory)->setValidate(false)->setCreationDate(new \DateTime())->setFinished(false)->setUpdateDate(new \DateTime())->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
 
         $manager->persist($serie1);
         $manager->persist($serie2);
@@ -82,10 +82,10 @@ class AppFixtures extends Fixture
         $book2 = new Book();
         $book3 = new Book();
         $book4 = new Book();
-        $book1->setStatus(true)->setTitle("book1")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie1);
-        $book2->setStatus(true)->setTitle("book2")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie1);
-        $book3->setStatus(true)->setTitle("book3")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(false)->setSpecial(true)->setSeries($serie2);
-        $book4->setStatus(false)->setTitle("book4")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie3);
+        $book2->setStatus(true)->setTitle("book2")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie1)->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
+        $book1->setStatus(true)->setTitle("book1")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie1)->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
+        $book3->setStatus(true)->setTitle("book3")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(false)->setSpecial(true)->setSeries($serie2)->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
+        $book4->setStatus(false)->setTitle("book4")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie3)->setCreationDate(new \DateTime())->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
         $manager->persist($book1);
         $manager->persist($book2);
         $manager->persist($book3);
