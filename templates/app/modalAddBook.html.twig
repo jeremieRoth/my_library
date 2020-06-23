@@ -1,0 +1,19 @@
+<div class="modal fade" id="modalAddBook" tabindex="-1" role="dialog" aria-labelledby="book" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">ajout livre</h3>
+            </div>
+            <div class="modal-body">
+                {{ form_start(book_form) }}
+                {{ form_widget(book_form) }}
+                <button class="">{{ button_label|default('ajout') }}</button>
+                {{ form_end(book_form) }}
+            </div>
+            <div class="modal-footer">
+                empty
+            </div>
+        </div>
+
+    </div>
+</div>

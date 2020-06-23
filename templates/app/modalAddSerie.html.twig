@@ -2,13 +2,16 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLongTitle">coucou2</h3>
+                <h3 class="modal-title" id="exampleModalLongTitle">ajout un livre/series</h3>
             </div>
             <div class="modal-body">
-                yolo
+                {{ form_start(serie_form) }}
+                {{ form_widget(serie_form) }}
+                <button class="">{{ button_label|default('ajout') }}</button>
+                {{ form_end(serie_form) }}
             </div>
             <div class="modal-footer">
-                toto
+                empty
             </div>
         </div>
 
