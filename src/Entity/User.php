@@ -18,6 +18,11 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @ORM\OneToOne(targetEntity="UserBookCollection", mappedBy="user")
+     */
+    private $userBookCollection;
+
+    /**
      * @ORM\Column(type="string", length=180)
      */
     private $name;
@@ -55,6 +60,24 @@ class User implements UserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserBookCollection()
+    {
+        return $this->userBookCollection;
+    }
+
+    /**
+     * @param mixed $userBookCollection
+     * @return User
+     */
+    public function setUserBookCollection($userBookCollection)
+    {
+        $this->userBookCollection = $userBookCollection;
+        return $this;
     }
 
     /**

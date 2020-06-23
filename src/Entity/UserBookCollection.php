@@ -18,7 +18,7 @@ class UserBookCollection
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\OneToOne(targetEntity="User", inversedBy="userBookCollection")
      */
     private $user;
 
@@ -28,9 +28,8 @@ class UserBookCollection
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Book")
+     * @ORM\ManyToMany(targetEntity="Book", cascade={"persist"})
      */
-    // TODO cascade
     private $bookList;
 
     public function getId(): ?int
@@ -93,7 +92,7 @@ class UserBookCollection
     }
 
     /**
-     * @param Book $bookList
+     * @param Book $book
      * @return UserBookCollection
      */
     public function addBook(Book $book)

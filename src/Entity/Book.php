@@ -32,12 +32,12 @@ class Book
     private $author;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Series::class)
+     * @ORM\ManyToOne(targetEntity=Series::class, cascade={"persist"})
      */
     private $series;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $summary;
 
@@ -45,6 +45,21 @@ class Book
      * @ORM\Column(type="date", nullable=true)
      */
     private $releaseDate;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $creationDate;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updateDate;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $validate;
 
     /**
      * @ORM\Column(type="boolean")
@@ -221,6 +236,42 @@ class Book
     public function setIsbn($isbn)
     {
         $this->isbn = $isbn;
+        return $this;
+    }
+
+    public function getCreationDate(): ?\DateTimeInterface
+    {
+        return $this->creationDate;
+    }
+
+    public function setCreationDate(?\DateTimeInterface $creationDate): self
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    public function getUpdateDate(): ?\DateTimeInterface
+    {
+        return $this->updateDate;
+    }
+
+    public function setUpdateDate(?\DateTimeInterface $updateDate): self
+    {
+        $this->updateDate = $updateDate;
+
+        return $this;
+    }
+
+    public function getValidate(): ?bool
+    {
+        return $this->validate;
+    }
+
+    public function setValidate(bool $validate): self
+    {
+        $this->validate = $validate;
+
         return $this;
     }
 }

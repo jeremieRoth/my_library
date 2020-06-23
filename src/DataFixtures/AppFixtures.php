@@ -82,10 +82,10 @@ class AppFixtures extends Fixture
         $book2 = new Book();
         $book3 = new Book();
         $book4 = new Book();
-        $book2->setStatus(true)->setTitle("book2")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie1)->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
-        $book1->setStatus(true)->setTitle("book1")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie1)->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
-        $book3->setStatus(true)->setTitle("book3")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(false)->setSpecial(true)->setSeries($serie2)->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
-        $book4->setStatus(false)->setTitle("book4")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie3)->setCreationDate(new \DateTime())->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime());
+        $book2->setStatus(true)->setTitle("book2")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie1)->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime())->setValidate(false);
+        $book1->setStatus(true)->setTitle("book1")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie1)->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime())->setValidate(false);
+        $book3->setStatus(true)->setTitle("book3")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(false)->setSpecial(true)->setSeries($serie2)->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime())->setValidate(false);
+        $book4->setStatus(false)->setTitle("book4")->setAuthor('azerty')->setIsbn('123')->setReleaseDate(new \DateTime())->setReleaseStatus(true)->setSpecial(false)->setSeries($serie3)->setCreationDate(new \DateTime())->setCreationDate(new \DateTime())->setUpdateDate(new \DateTime())->setValidate(false);
         $manager->persist($book1);
         $manager->persist($book2);
         $manager->persist($book3);
