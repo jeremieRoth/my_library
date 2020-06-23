@@ -7,18 +7,19 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BookType extends AbstractType
+class UserBookType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('title')
             ->add('author')
-            ->add('releaseDate')
-            ->add('releaseStatus')
-            ->add('status')
+            ->add('number')
+//            ->add('releaseDate')
+//            ->add('releaseStatus')
+//            ->add('status')
             ->add('special')
-            ->add('series')
+//            ->add('series')
             ->add('isbn')
         ;
     }
