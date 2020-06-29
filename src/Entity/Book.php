@@ -27,7 +27,7 @@ class Book
     private $number;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=Author::class, cascade={"persist"})
      */
     private $author;
 
@@ -119,7 +119,7 @@ class Book
     }
 
     /**
-     * @return mixed
+     * @return Author
      */
     public function getAuthor()
     {
@@ -127,17 +127,17 @@ class Book
     }
 
     /**
-     * @param mixed $author
+     * @param Author $author
      * @return Book
      */
-    public function setAuthor($author)
+    public function setAuthor(Author $author): Book
     {
         $this->author = $author;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return Series
      */
     public function getSeries()
     {
@@ -145,10 +145,10 @@ class Book
     }
 
     /**
-     * @param mixed $series
+     * @param Series $series
      * @return Book
      */
-    public function setSeries($series): Book
+    public function setSeries(Series $series): Book
     {
         $this->series = $series;
 
